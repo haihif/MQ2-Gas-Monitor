@@ -2,18 +2,16 @@
 #include <uRTCLib.h>
 #include <SD.h>
 #include <stdio.h>
-//#include <sd_defines.h>
-//#include <sd_diskio.h>
 #include <math.h>
 #include <LiquidCrystal_I2C.h> 
 
 #define         MQ_PIN                       34     // chân nhận tín từ cảm biến MQ2
-#define         RL_VALUE                     5     // giá trị điện trở tải trên module MQ2 (kilo_ohm)
+#define         RL_VALUE                     5      // giá trị điện trở tải trên module MQ2 (kilo_ohm)
 #define         RS_RO_RATIO_CLEAN_AIR        9.83   // hằng số tỷ lệ Rs/R0 ( chi tiết trong datasheet)
 
-#define         SAMPLE_TIMES                 20    // số lần đọc trong 1 lần lấy mẫu
-#define         RO_SAMPLE_INTERVAL           500   // khoảng thời gian giữa 2 lần lấy mẫu đối với tìm Ro (mili giây)                                              
-#define         READ_SAMPLE_INTERVAL         50    // khoảng thời gian giữa 2 lần lấy mẫu đối với đọc giá trị adc (mili giây)
+#define         SAMPLE_TIMES                 20     // số lần đọc trong 1 lần lấy mẫu
+#define         RO_SAMPLE_INTERVAL           500    // khoảng thời gian giữa 2 lần lấy mẫu đối với tìm Ro (mili giây)                                              
+#define         READ_SAMPLE_INTERVAL         50     // khoảng thời gian giữa 2 lần lấy mẫu đối với đọc giá trị adc (mili giây)
 
 
 #define         GAS_LPG                      0     // Khí dễ cháy
@@ -64,7 +62,7 @@ uRTCLib rtc(0x68);
   Propane     -0.461038681    1.290828982     (C3H8)         
   
 */
-float           LPGCurve[2]       =  { -0.454838059  , 1.25063406};   
+float           LPGCurve[2]       =  {-0.454838059   , 1.25063406};   
 float           MethaneCurve[2]   =  {-0.372003751   , 1.349158571};    
 float           COCurve[2]        =  {-0.33975668    , 1.512022272};    
 float           AlcoholCurve[2]   =  {-0.373311285   , 1.310286169};
@@ -75,11 +73,9 @@ float           Ro;                                 // sensor resistance at 1000
 
 void setup()
 {
-  Serial.begin(115200);                               //UART
-//delay(120000)                                     // Làm nóng cảm biến trong 2 phút.
-  Serial.print("Calibrating...\n");                
-                        //Hiệu chỉnh theo cảm biến. Tìm Ro khi đặt trong không khí sạch 
-                                                                   
+  Serial.begin(115200);                             //UART
+  delay(120000)                                     // Làm nóng cảm biến trong 2 phút.
+  Serial.print("Calibrating...\n");                                
   Serial.print("Calibration is done...\n"); 
   Serial.print("Ro=");
   Serial.print(Ro);
@@ -134,7 +130,6 @@ void loop()
 
   lcd.setCursor(0,1);
   lcd.print("LPG: "); lcd.print(LPGppm);
-//  lcd.print("PRP: "); lcd.print(Propaneppm);
 
   delay(1000);
 
