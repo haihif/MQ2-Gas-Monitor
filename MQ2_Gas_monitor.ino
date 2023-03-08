@@ -48,7 +48,7 @@ uRTCLib rtc(0x68);
 
     log(y) = a * log(x) + b
 
-  Từ đó với mỗi loại khí khắc nhau, từ 2 điểm trên đồ thị
+  Từ đó với mỗi loại khí khác nhau, từ 2 điểm trên đồ thị
   chúng ta có thể xác định được 2 tham số a và b đặc trưng 
   cho từng loại khí.
   
@@ -138,7 +138,7 @@ void loop()
 /****************************** RsCalculator ****************************************
  * Tìm giá trị trở kháng của MQ2
  * 
- * Công thức: Rs = (VCC*RL) / Vout - RL
+ * Công thức: Rs = (VCC * RL) / Vout - RL
  * 
 *************************************************************************************/ 
 float RsCalculator(int raw_adc)
