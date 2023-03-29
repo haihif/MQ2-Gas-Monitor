@@ -1,6 +1,5 @@
 #include <SPI.h>
 #include <uRTCLib.h>
-#include <SD.h>
 #include <stdio.h>
 #include <math.h>
 #include <LiquidCrystal_I2C.h> 
