@@ -107,14 +107,10 @@ void loop()
 {
   rtc.refresh();
   
-  Serial.printf("%d/%d/%d [%d:%d:%d]",rtc.year(), rtc.month(), rtc.day(), rtc.hour(), rtc.minute(), rtc.second());
-  
   float _readRs      =    readRs(MQ_PIN);
 
    int LPGppm        =    getGas(_readRs/Ro,  GAS_LPG);
-   int Methaneppm    =    getGas(_readRs/Ro,  GAS_METHANE);
    int SMOKEppm      =    getGas(_readRs/Ro,  GAS_SMOKE);
-   int Alcoholppm    =    getGas(_readRs/Ro,  GAS_ALCOHOL);
    int Propaneppm    =    getGas(_readRs/Ro,  GAS_PROPANE);
 
   Serial.printf("LPG: %dppm; PRO: %dppm; SMK: %dppm\n",LPGppm, Propaneppm, SMOKEppm);
